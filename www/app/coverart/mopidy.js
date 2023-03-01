@@ -24,7 +24,8 @@
         if (image.uri.charAt(0) == '/') {
           var url = new URL(settings.webSocketUrl);
           var protocol = url.protocol === 'ws' ? 'http' : 'https';
-          return angular.extend({uri: protocol + '://' + hostname + image.uri});
+          var uri = protocol + '://' + url.hostname + ":" + url.port + image.uri;
+          return angular.extend({ uri });
         } else {
           return image;
         }
